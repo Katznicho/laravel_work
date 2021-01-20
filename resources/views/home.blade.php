@@ -1,8 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container mt-5">
+    {{-- <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
@@ -17,6 +16,14 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+        </div>
+    </div> --}}
+    <div class="row">
+        <div class="col-md-12">
+            {{-- @if ($patients->count())
+                   <h2>Total patients are  {{ $patients->count() }}</h2>      
+            @endif --}}
+
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGeneralHospitalsTable extends Migration
+class CreateRegisterDonorMoneyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateGeneralHospitalsTable extends Migration
      */
     public function up()
     {
-        
-        Schema::create('general_hospitals', function (Blueprint $table) {
+        Schema::create('register_donor_money', function (Blueprint $table) {
             $table->id();
-            $table->string('hospital_name');
-            $table->integer('officer_total')->unsigned();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('donor_name');
+            $table->string('amount');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateGeneralHospitalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('general_hospitals');
+        Schema::dropIfExists('register_donor_money');
     }
 }

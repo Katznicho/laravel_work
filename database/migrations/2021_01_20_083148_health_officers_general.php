@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHealthOfficersTable extends Migration
+class HealthOfficersGeneral extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateHealthOfficersTable extends Migration
      */
     public function up()
     {
-        Schema::create('health_officers', function (Blueprint $table) {
+        Schema::create('health_officers_generals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('administrator_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('officer_name');
             $table->string('role')->default('officer');
             $table->string('district_name')->nullable();
@@ -23,8 +23,8 @@ class CreateHealthOfficersTable extends Migration
             $table->string('award')->default('0');
             $table->boolean('pending')->default(false);
             $table->string('monthly_allowane')->default('0');
-            $table->string('hospital_id');
-            $table->string('hospital_category')->default('general_hospital');
+            $table->integer('hospital_id')->default(0);
+            $table->string('hospital_name');
             $table->timestamps();
         });
     }
@@ -36,6 +36,6 @@ class CreateHealthOfficersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('health_officers');
+        Schema::dropIfExists('health_officers_generals');
     }
 }
