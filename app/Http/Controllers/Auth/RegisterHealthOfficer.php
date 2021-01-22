@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use  Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use App\Models\HealthOfficer;
 use App\Models\GeneralHospital;
 use App\Models\NationalHospital;
@@ -39,6 +40,9 @@ class RegisterHealthOfficer extends Controller
                 :
                 null;
             }
+            DB::table('general_hospitals')
+            ->where('officer_total', '=', $findMin[0])->increment('officer_total', 1);
+
          $request->user()->registerOfficer()->create(
                [
                    'officer_name'=>$request->officer_name,

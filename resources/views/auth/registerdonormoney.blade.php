@@ -106,7 +106,7 @@
 
                     <div class="col-md-12">
                         <input id="name" type="name" 
-                        placeholder="forexample 1,000,0000"
+                        placeholder="forexample 1000000 without commas"
                         class="form-control 
                         @error('amount') is-invalid
                          @enderror" name="amount" value="{{ old('amount') }}"
