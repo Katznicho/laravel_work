@@ -23,6 +23,6 @@ class RegisterDonorMoneyController extends Controller
 
         ]
         );
-        return back()->with('status', 'shs '. $request->amount . ' registered successfully');
+        return back()->with('status', 'shs '. number_format($request->amount) . ' registered successfully');
     }
 }

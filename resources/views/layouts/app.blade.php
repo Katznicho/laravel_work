@@ -73,6 +73,8 @@
                                         class="dropdown-item">EnrolledPatients</a>
                                         <a href="{{ route('money') }}" 
                                         class="dropdown-item">MoneyDistributed</a>
+                                        <a href="{{ route('graphs') }}" 
+                                        class="dropdown-item">Graphs</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
@@ -101,6 +103,8 @@
                                         class="dropdown-item">EnrolledPatients</a>
                                         <a href="{{ route('money') }}" 
                                         class="dropdown-item">MoneyDistributed</a>
+                                        <a href="{{ route('graphs') }}" 
+                                        class="dropdown-item">Graphs</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
