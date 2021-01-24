@@ -12,7 +12,7 @@
     .shadow{
 
         width:70%;
-        height: 60vh;
+        height: 80vh;
         background:#ededed;
         box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.8);
         margin-bottom: 10px;
@@ -56,7 +56,7 @@
         display: none;
     }
     .footer{
-        margin-top: -8rem;
+        margin-top: -2rem;
     }
     .footer>a{
         text-decoration:none;
@@ -99,8 +99,29 @@
                         @enderror
                     </div>
                 </div>
-
+            
+                  
                 <div class="form-group  ">
+                    <label for="month" class="col-md-12 col-form-label
+                    ">Month</label>
+
+                    <div class="col-md-12">
+                        <input id="month" type="month" 
+                        class="form-control 
+                        @error('month') is-invalid
+                         @enderror" name="month" value="{{ old('month') }}"
+                          >
+
+                        @error('month')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                
+
+                <div class="form-group mb-4 ">
                     <label for="name" class="col-md-12 col-form-label
                     ">Amount</label>
 
@@ -120,7 +141,7 @@
                     </div>
                 </div>
                 
-                <div class="form-group ml-6 mt-4 ">
+                <div class="form-group ml-6 mb-4 ">
                         <button type="submit" class="btn btn-primary">
                             {{ __('Register') }}
                         </button>

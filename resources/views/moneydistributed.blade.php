@@ -17,7 +17,7 @@
     }
     .tab-money{
         text-align: center;
-        background:#8b0000;
+        background:black;
         color:#fff;
         border-radius: 999px;
         width: 100%;
@@ -43,12 +43,87 @@
     small{
         font-weight: bold;
     }
+    .inputs{
+      display: flex;
+      flex-direction: column;
+    }
+    .inputs>input{
+      width: 100%;
+      flex: 1;
+    }
+    }
+    span.invalid-feedback{
+        text-align: center !important;
+    }
+    .invalid{
+        color:#e3342f !important;
+    }
+    .form-group{
+        display: flex !important;
+        flex-direction: column ;
+        flex: 1;
+    }
+    button.btn.btn-primary{
+        flex: 1 !important;
+        background: #1c478e !important;
+        margin-left: 10px !important;
+        margin-right: 8px !important;
+    }
+    .label{
+      text-align: center;
+      font-weight: bold;
+      margin-top:12px;
+      padding-top: 15px;
+
+    }
+
+
 </style>
 <div class="money_background">
-    <div class="container mt-4">
+    <div class="container mt-4"
+    >
+   
+  <form method="POST" action="{{ route('money') }}" class="m-2">
+    @csrf
+
+    <div class="form-group  ">
+      <div class="form-group row">
+        <label for="role" class="label">{{ __('SelectMonth') }}</label>
+        <div class="col-md-12">
+            <select name="month" id="" class="form-control">
+              @if (count($months))
+              @foreach ($months as $month)
+              <option value={{ $month->month }}>{{ $month->month }}</option>
+          @endforeach
+              @else
+              <option value="January">January</option>
+              @endif
+              
+
+            </select>
+            
+            @error('role')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
+        </div>
+    </div>
+    <div class="form-group ml-6 mt-2">
+            <button type="submit" class="btn btn-primary">
+                {{ __('SelectMonth') }}
+            </button>
+        
+    </div>
+</form> 
         <div class="row justify-content-center">
             <div class="col-md-12 m-3">
-                <p class="tab-money">MoneyDistribution</p>
+                <p class="tab-money">MoneyDistributionIn 
+                  @if ($default)
+                      {{ $default }}
+                  @endif
+                </p>
             </div>
             <div class="col-md-12 mt-3">
                 <p class="tab">MoneyDistributionToStaffMembers</p>
