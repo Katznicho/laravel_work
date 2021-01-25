@@ -17,6 +17,7 @@ class CreateRegisterDonorMoneyTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('donor_name');
+            $table->string('month');
             $table->string('amount');
             $table->timestamps();
         });

@@ -75,6 +75,8 @@
                                         class="dropdown-item">MoneyDistributed</a>
                                         <a href="{{ route('graphs') }}" 
                                         class="dropdown-item">Graphs</a>
+                                        <a href="{{ route('graphical') }}" 
+                                        class="dropdown-item">Charts</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
@@ -105,6 +107,8 @@
                                         class="dropdown-item">MoneyDistributed</a>
                                         <a href="{{ route('graphs') }}" 
                                         class="dropdown-item">Graphs</a>
+                                        <a href="{{ route('graphical') }}" 
+                                        class="dropdown-item">Charts</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
