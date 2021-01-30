@@ -19,6 +19,7 @@ class CreateRegisterDonorMoneyTable extends Migration
             $table->string('donor_name');
             $table->string('month');
             $table->string('amount');
+            $table->string('contact')->default("0759461148");
             $table->timestamps();
         });
     }

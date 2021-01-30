@@ -22,8 +22,11 @@ class RegisterDonorMoneyController extends Controller
         $this->validate($request, 
         ['donor_name'=>'required',
         'month'=>'required',
+        'contact'=>'required|min:10|max:10',
         'amount'=>'required']
     );
+    //dd($request);
+    //echo $request->contact;
     $months_array = ['January'=>'1', 'February'=>'2', 'March'=>'3', 'April'=>'4',
     'May'=>'5', 'June'=>'6', 'July'=>'7', 'August'=>'8', 
     'September'=>'9', 'October'=>'10', 'November'=>'11', 'December'=>'12'];
@@ -33,10 +36,11 @@ class RegisterDonorMoneyController extends Controller
         [
             'donor_name'=>$request->donor_name,
             'month'=>$this->getMonth($months_array, $expode),
-            'amount'=>$request->amount
+            'amount'=>$request->amount,
+            'contact'=>$request->contact
 
         ]
         );
-        return back()->with('status', 'shs '. number_format($request->amount) . ' registered successfully');
+        return back();
     }
 }

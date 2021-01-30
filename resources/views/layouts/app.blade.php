@@ -20,13 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <style>
-        .positioning{
-            position:sticky !important;
-            top: 0;
-            z-index: 100;
-        }
-    </style>
+
     <div id="app">
 
         <div class="positioning">
@@ -61,35 +55,8 @@
                                     </li>
                                 @endif
                             @else
-                                 @if(Auth::user()->role === 'Director')
-                                <li class="nav-item dropdown">
-    
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
-                                    </a>
-    
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a href="{{ route('patientlist') }}" 
-                                        class="dropdown-item">EnrolledPatients</a>
-                                        <a href="{{ route('money') }}" 
-                                        class="dropdown-item">MoneyDistributed</a>
-                                        <a href="{{ route('graphs') }}" 
-                                        class="dropdown-item">Graphs</a>
-                                        <a href="{{ route('graphical') }}" 
-                                        class="dropdown-item">Charts</a>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-    
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
-                                @endif
-                                 @if (Auth::user()->role === 'Administrator')
+                                 
+                            
                                  <li class="nav-item dropdown">
                                      
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -98,13 +65,13 @@
     
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a href="{{ route('registerofficer') }}" 
-                                        class="dropdown-item">RegisterCHO</a>
+                                        class="dropdown-item">Officers</a>
                                         <a href="{{ route('registerdonormoney') }}" 
-                                        class="dropdown-item">DonorMoney</a>
+                                        class="dropdown-item">MoneyDonated</a>
                                         <a href="{{ route('patientlist') }}" 
-                                        class="dropdown-item">EnrolledPatients</a>
+                                        class="dropdown-item">Patients</a>
                                         <a href="{{ route('money') }}" 
-                                        class="dropdown-item">MoneyDistributed</a>
+                                        class="dropdown-item">MonthlySalary</a>
                                         <a href="{{ route('graphs') }}" 
                                         class="dropdown-item">Graphs</a>
                                         <a href="{{ route('graphical') }}" 
@@ -121,7 +88,7 @@
     
                                     </div>
                                 </li>
-                                 @endif
+                                
                                 
                             @endguest
                         </ul>

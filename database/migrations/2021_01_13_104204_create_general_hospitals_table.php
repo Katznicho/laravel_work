@@ -17,7 +17,7 @@ class CreateGeneralHospitalsTable extends Migration
         Schema::create('general_hospitals', function (Blueprint $table) {
             $table->id();
             $table->string('hospital_name');
-            $table->integer('officer_total')->unsigned();
+            $table->integer('officer_total');
             $table->timestamps();
         });
     }

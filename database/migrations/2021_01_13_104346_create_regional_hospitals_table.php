@@ -16,7 +16,7 @@ class CreateRegionalHospitalsTable extends Migration
         Schema::create('regional_hospitals', function (Blueprint $table) {
         $table->id();
         $table->string('hospital_name');
-        $table->integer('officer_total')->unsigned();
+        $table->integer('officer_total');
         $table->timestamps();
     });
     }

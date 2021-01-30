@@ -19,11 +19,11 @@ class HealthOfficersReferal extends Migration
             $table->string('officer_name');
             $table->string('role')->default('officer');
             $table->string('district_name')->nullable();
-            $table->string('upgrade')->nullable();
+            $table->string('promoted')->default("no");
             $table->string('award')->default('0');
-            $table->boolean('pending')->default(false);
-            $table->string('monthly_allowane')->default('0');
+            $table->string('monthly_salary')->default('0');
             $table->integer('hospital_id')->default(0);
+            $table->string("contact");
             $table->string('hospital_name');
             $table->timestamps();
         });

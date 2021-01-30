@@ -9,6 +9,9 @@ class Money extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'month'
+        'month',
+        'contact',
+        'donor_name',
+        'amount'
     ];
 }

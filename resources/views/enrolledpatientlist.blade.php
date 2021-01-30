@@ -3,59 +3,28 @@
 
 @section('content')
 <style>
-    .black{
-        background: #bdc3c7;
-    }
     .patients{
-        text-align: center;
-        font-weight: 800;
-        padding: 10px;
-        margin: 10px;
-    }
-    .tab{
-        text-align: center;
-        background: #1c478e;
-        color:#fff;
-        border-radius: 999px;
-        width: 100%;
-        padding: 8px;
-        font-weight: 800;
+      text-align:center;
+      font-weight:bold;
+
     }
     .tab-patients{
-        text-align: center;
-        background:#8b0000;
-        color:#fff;
-        border-radius: 999px;
-        width: 100%;
-        padding: 10px;
-        height: fit-content;
-        font-weight: 900;
-
+      text-align:center;
+      font-weight:900;
     }
-    table.table.table-striped.table-dark:hover{
-        cursor: pointer !important;
+    .p{
+      color:red;
+      font-weight:bold;
+      text-align:center;
     }
-    .footer{
-        margin-top: 4rem;
-        padding: 10px;
-        text-align: center;
-    }
-    .footer>a{
-        text-decoration:none;
-
-        cursor: pointer;
-        font-weight: bold;
-    }
-    
-
 </style>
 <div class="black">
     <div class="container">
         <div class="row justify-content-center">
-            <h2 class="patients">Enrolled Patients</h2>
+            <h2 class="patients">PATIENTSLIST</h2>
             @if ($patients_general->count())
                 <div class="col-md-12">
-                    <p class="tab-patients">TotalPatients  👉  {{ $patients_total }}</p>
+                    <h4 class="tab-patients">TotalPatients<div class="p"> {{ $patients_total }}</> </h4>
                 </div>
                 <div class="col-md-12">
                     <p class="tab">PatientsByGeneralHospital</p>
@@ -66,7 +35,6 @@
                         <th scope="col">PatientID</th>
                         <th scope="col">PatientName</th>
                         <th scope="col">Gender</th>
-                        <th scope="col">DOI</th>
                         <th scope="col">Status</th>
                         <th scope="col">OFficerName</th>
                         <th scope="col">HospitalName</th>
@@ -79,15 +47,15 @@
                             <th scope="row">{{ $patient->patient_id }}</th>
                             <td>{{ $patient->patient_name }}</td>
                             <td>{{ $patient->gender }}</td>
-                            <td>{{\Carbon\Carbon::parse($patient->created_at)->diffForHumans()}}</td>
-                            <td>{{ $patient->category }}</td>
+                          
+                            <td>{{ $patient->status }}</td>
                             <td>{{ $patient->officer_name }}</td>
                             <td>{{ $patient->hospital_name }}</td>
                           </tr>
                         @endforeach  
                     </tbody>
                   </table>
-                  {{ $patients_general->links() }}
+                
 
             @else
             <div class="mt-5">
@@ -105,7 +73,7 @@
                     <th scope="col">PatientID</th>
                     <th scope="col">PatientName</th>
                     <th scope="col">Gender</th>
-                    <th scope="col">DOI</th>
+              
                     <th scope="col">Status</th>
                     <th scope="col">OFficerName</th>
                     <th scope="col">HospitalName</th>
@@ -118,15 +86,15 @@
                         <th scope="row">{{ $patient->patient_id }}</th>
                         <td>{{ $patient->patient_name }}</td>
                         <td>{{ $patient->gender }}</td>
-                        <td>{{\Carbon\Carbon::parse($patient->created_at)->diffForHumans()}}</td>
-                        <td>{{ $patient->category }}</td>
+                        
+                        <td>{{ $patient->status }}</td>
                         <td>{{ $patient->officer_name }}</td>
                         <td>{{ $patient->hospital_name }}</td>
                       </tr>
                     @endforeach  
                 </tbody>
               </table>
-              {{ $patients_referals->links() }}
+          
                   
               @else
               <div class="mt-5">
@@ -162,24 +130,20 @@
                                 <td>{{ $patient->patient_name }}</td>
                                 <td>{{ $patient->gender }}</td>
                                 <td>{{\Carbon\Carbon::parse($patient->created_at)->diffForHumans()}}</td>
-                                <td>{{ $patient->category }}</td>
+                                <td>{{ $patient->status }}</td>
                                 <td>{{ $patient->officer_name }}</td>
                                 <td>{{ $patient->hospital_name }}</td>
                               </tr>
                             @endforeach  
                         </tbody>
                       </table>
-                      {{ $patients_nationals->links() }}
+                    
     
                 @else
                 <div class="mt-5">
                     <h2>There are no patients yet in national hospital</h2>
                 </div>
                 @endif 
-                <div class="footer">
-                    <small>2021 All Rights Reserved</small>
-                    <a href="{{ route('home') }}">BackHome</a>
-                </div>
 
         </div>
         

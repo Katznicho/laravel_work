@@ -17,7 +17,7 @@ class CreatePatientsDetailsGeneralsTable extends Migration
             $table->bigIncrements('patient_id');
             $table->string('patient_name');
             $table->string('gender');
-            $table->string('category');
+            $table->string('status')->default("alive");
             $table->integer('officer_id');
             $table->timestamps();
         });

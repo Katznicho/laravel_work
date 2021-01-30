@@ -19,8 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role');
-            $table->string('monthly_allowane')->default('0');
+            $table->string('monthly_salary')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

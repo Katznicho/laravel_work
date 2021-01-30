@@ -59,12 +59,12 @@ class MoneyDistributedController extends Controller
     }
     private function  format_currency($array_currency){
        return  array_map(function($currency){
-             if($currency->monthly_allowane){
-                $currency->monthly_allowane = number_format($currency->monthly_allowane, 2, '.', ',');
+             if($currency->monthly_salary){
+                $currency->monthly_salary = number_format($currency->monthly_salary, 2, '.', ',');
                 return $currency;
              }
              else{
-                 $currency->monthly_allowane = number_format($currency->monthly_allowane,2);
+                 $currency->monthly_salary = number_format($currency->monthly_salary,2);
                  return $currency;
              }
         }, $array_currency);
@@ -85,7 +85,8 @@ class MoneyDistributedController extends Controller
         $remaining_after_admin = $this->cal_payments($remaining_after_superintendent, $administrator_money);
 
         //calcutte total officers in general hospitals
-        $total_officers_general = $this->officer_total(DB::select('select role from health_officers_generals'));
+        $total_officers_general = 
+        $this->officer_total(DB::select('select role from health_officers_generals'));
 
         //officers general hospital salary
         $general_officer_salary = $administrator_money*(8/5);
@@ -131,33 +132,34 @@ class MoneyDistributedController extends Controller
         $money = '200';
 
         //updating records
-          DB::update("update health_officers_nationals set monthly_allowane = $director_money_national_referal
+          DB::update("update health_officers_nationals set monthly_salary= $director_money_national_referal
           where role = ?", ['director']);
-          DB::update("update health_officers_referals set monthly_allowane = $superintendent_total_salary
+          DB::update("update health_officers_referals set monthly_salary= $superintendent_total_salary
           where role = ?", ['superintendent']);
-          DB::update("update health_officers_referals set monthly_allowane = $senior_total_salary
+          DB::update("update health_officers_referals set monthly_salary= $senior_total_salary
           where role = ?", ['senior officer']);
-          DB::update("update health_officers_generals set monthly_allowane = $officer_total_general_salary
+          DB::update("update health_officers_generals set monthly_salary= $officer_total_general_salary
           where role = ?", ['officer']);
-          DB::update("update health_officers_generals set monthly_allowane = $officer_total_general_salary
+          DB::update("update health_officers_generals set monthly_salary= $officer_total_general_salary
           where role = ?", ['head']); 
-          DB::update("update users set monthly_allowane = $director_money_national_referal
-          where role = ?", ['director']);
-          DB::update("update users set monthly_allowane = $admin_total_salary
-          where role = ?", ['administrator']);  
+          DB::update("update users set monthly_salary= $director_money_national_referal");
+          DB::update("update users set monthly_salary= $admin_total_salary");  
 
 
 
         
           //return a view
-          $staff_money = $this->format_currency(DB::select("select role, name, monthly_allowane from users"));
-          $officers_at_general_hospitals = $this->format_currency(DB::select('select role, officer_name, monthly_allowane
+          $staff_money = $this->format_currency(DB::select("select name,
+           monthly_salary from users"));
+          $officers_at_general_hospitals = $this->format_currency(DB::select('select 
+           officer_name, monthly_salary
            from health_officers_generals'));
-           $officers_at_referal_hospitals = $this->format_currency(DB::select('select role, 
-           officer_name, monthly_allowane
+           $officers_at_referal_hospitals = $this->format_currency(DB::select('select  
+           officer_name, monthly_salary
            from health_officers_referals'));
-           $officers_at_national_hospitals = $this->format_currency(DB::select('select role, officer_name, 
-           monthly_allowane
+           $officers_at_national_hospitals = $this->format_currency(DB::select('select  
+           officer_name, 
+           monthly_salary
            from health_officers_nationals'));
            return view('moneydistributed',
            ['staff_payments'=>$staff_money,
@@ -182,8 +184,7 @@ class MoneyDistributedController extends Controller
         'officers_at_general'=>$officers_at_general_hospitals,
         'officers_at_referal'=>$officers_at_referal_hospitals,
         'officers_at_national'=>$officers_at_national_hospitals,
-        'months'=>$months,
-        'default'=>$this->default_month
+        'months'=>$months
         ]);
       }
       //$formated_currency;

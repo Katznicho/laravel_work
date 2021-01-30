@@ -2,32 +2,13 @@
 
 @section('content')
 <style>
-        .footer{
-        margin-top: 4rem;
-        padding: 10px;
-        text-align: center;
-    }
-    .tab{
-        text-align: center;
-        background:#000;
-        color:#fff;
-        border-radius: 999px;
-        width: 100%;
-        padding: 8px;
-        font-weight: 800;
-    }
-    .footer>a{
-        text-decoration:none;
-
-        cursor: pointer;
-        font-weight: bold;
-    }
+      
 </style>
 <div class="layout">
       <!-- Chart's container -->
       <div class="container mt-3">
         <div class="col-md-12 mt-3 mb-3">
-          <p class="tab">GraphsDisplay</p>
+          <p class="tab">Graphs</p>
       </div>
         <div id="wellwishers" style="height: 500px;" class="m-4"></div>
         <div class="col-md-12 mt-3 mb-3">
@@ -37,11 +18,7 @@
       </div>
 
      
-        <div class="footer">
-            <small>2021 All Rights Reserved</small>
-            <a href="{{ route('home') }}">BackHome</a>
-        </div>
-    </div>
+        
     
 </div>
 <!-- Charting library -->
@@ -66,12 +43,12 @@
               style:"bold"
             }
             })
-           .legend({position:"bottom"})
+           .legend({position:"top"})
            .datasets([{type:"bar", 
            label:"wellwishers",
            borderColor:"orange",
-           backgroundColor:"orange",
-           hoverBackgroundColor:"blue",
+           backgroundColor:"yellow",
+           hoverBackgroundColor:"green",
            barPercentage: 0.6,
            minBarLength: 2,
            axis:true,
@@ -91,8 +68,8 @@
            .datasets([{type:"bar", 
            label:"months",
            borderColor:"orange",
-           backgroundColor:"darkgreen",
-           hoverBackgroundColor:"red",
+           backgroundColor:"purple",
+           hoverBackgroundColor:"yellow",
            barPercentage: 0.6,
            minBarLength: 2,
            axis:true

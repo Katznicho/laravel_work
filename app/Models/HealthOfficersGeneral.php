@@ -11,6 +11,7 @@ class HealthOfficersGeneral extends Model
     protected $fillable = [
         'officer_name',
         'hospital_name',
-        'hospital_id'
+        'hospital_id',
+        'contact'
     ];
 }
